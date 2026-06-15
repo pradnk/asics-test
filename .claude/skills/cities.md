@@ -1,2 +1,2 @@
 india/karnataka/bangalore
-india/karnataka/mysore
+india/karnataka/mysuru
