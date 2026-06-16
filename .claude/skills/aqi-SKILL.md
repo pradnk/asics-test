@@ -82,7 +82,7 @@ Runs via the same launchd trigger (touch `.run_trigger`, poll `.run_done`). The 
 `../scripts/refresh_sheets.py` handles the push directly.
 
 Sheet: `https://docs.google.com/spreadsheets/d/1ptt1Lye__zLQQB-3_wAASvMsaoJsXYAmWLsws078DtQ/edit`
-Service account key: `../scripts/keys/sheets-key.json` (already shared as Editor on the sheet)
+Service account key: `~/keys/sheets-key.json` (already shared as Editor on the sheet)
 
 All tabs are overwritten on each run (full replace, not append). City IDs come from the order
 in `cities.md` (1-indexed). The script is `../scripts/refresh_sheets.py`.
