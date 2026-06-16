@@ -89,13 +89,13 @@ Add domain-specific requests as appropriate:
 ### Step 5: Build the .docx file
 
 - Read `.claude/assets/rti_template.md` to get the canonical document structure and boilerplate text. The generated document must follow this template exactly — same section order, same boilerplate sentences (opening, certified copies clause, Section 6(3) transfer clause, electronic format preference).
-- Edit the variables at the top of the **existing** script at `.claude/scripts/rti_generator.js` (do NOT create a new script):
+- Copy the script at `.claude/scripts/rti_generator_template.js` to `.claude/scripts/generate_rti_application.js` and edit the variables at the top of the **copied** script at `.claude/scripts/rti_generator.js`: 
   - `authority` — the public authority name
   - `officeAddress` — the PIO office address
   - `infoRequests` — array of 5–8 RTI questions for this specific request
   - `applicantName`, `applicantAddress`, `applicantMobile`, `applicantEmail` — from user or placeholders
   - The output filename in `fs.writeFileSync(...)` — use `RTI_Application_<short_topic>.docx`
-- Run the script with: `NODE_PATH=/Users/pradeep/.nvm/versions/node/v24.14.0/lib/node_modules node .claude/scripts/generate_rti.js`
+- Run the script with: `NODE_PATH=/Users/pradeep/.nvm/versions/node/v24.14.0/lib/node_modules node .claude/scripts/generate_rti_application.js`
 - If `docx` is not installed globally, install it with `npm install -g docx` and then run the script.
 
 ### Template updates
