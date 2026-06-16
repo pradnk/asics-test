@@ -1,1 +1,11 @@
 .DS_Store
+.claude/scripts/data/
+.claude/scripts/keys/
+.claude/scripts/logs/
+.claude/scripts/aqi_tokens.json
+.claude/scripts/run.log
+.claude/scripts/.run_done
+.claude/scripts/.run_trigger
+.claude/scripts/aqi.md
+.claude/scripts/*.json
+data/*

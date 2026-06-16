@@ -1,0 +1,10 @@
+india/karnataka/bangalore
+india/karnataka/mysuru
+india/karnataka/madikeri
+india/karnataka/hubballi
+india/karnataka/bidar
+india/karnataka/belagavi
+india/maharashtra/mumbai
+india/delhi/new-delhi
+india/goa/panaji
+india/maharashtra/pune
