@@ -89,7 +89,7 @@ Add domain-specific requests as appropriate:
 ### Step 5: Build the .docx file
 
 - Read `.claude/assets/rti_template.md` to get the canonical document structure and boilerplate text. The generated document must follow this template exactly — same section order, same boilerplate sentences (opening, certified copies clause, Section 6(3) transfer clause, electronic format preference).
-- Edit the variables at the top of the **existing** script at `.claude/scripts/generate_rti.js` (do NOT create a new script):
+- Edit the variables at the top of the **existing** script at `.claude/scripts/rti_generator.js` (do NOT create a new script):
   - `authority` — the public authority name
   - `officeAddress` — the PIO office address
   - `infoRequests` — array of 5–8 RTI questions for this specific request
