@@ -10,3 +10,4 @@
 .claude/scripts/*.json
 data/*
 *.docx
+.claude/scripts/rti_generator.js
