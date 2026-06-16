@@ -8,3 +8,5 @@ india/maharashtra/mumbai
 india/delhi/new-delhi
 india/goa/panaji
 india/maharashtra/pune
+india/telangana/hyderabad
+india/rajasthan/jaipur
