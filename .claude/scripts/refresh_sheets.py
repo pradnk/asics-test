@@ -10,7 +10,7 @@ from googleapiclient.discovery import build
 
 SHEET_ID = "1ptt1Lye__zLQQB-3_wAASvMsaoJsXYAmWLsws078DtQ"
 SCRIPT_DIR = Path(__file__).parent
-KEY_FILE = SCRIPT_DIR / "keys" / "sheets-key.json"
+KEY_FILE = Path.home() / "keys" / "sheets-key.json"
 DATA_DIR = SCRIPT_DIR / "data" / "aqi"
 CITIES_FILE = SCRIPT_DIR / "cities.md"
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]

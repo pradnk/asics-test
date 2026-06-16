@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>org.asics.mospi-fetch</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/pradeep/Work/asics-test/.claude/scripts/run_mospi.sh</string>
+  </array>
+
+  <!-- Fire when Claude writes to this trigger file -->
+  <key>WatchPaths</key>
+  <array>
+    <string>/Users/pradeep/Work/asics-test/.claude/scripts/.mospi_trigger</string>
+  </array>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/mospi_run.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/mospi_run.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>
