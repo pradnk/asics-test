@@ -1,25 +1,77 @@
-const { Document, Packer, Paragraph, TextRun, AlignmentType, UnderlineType } = require('docx');
+const {
+  Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
+  AlignmentType, BorderStyle, WidthType, UnderlineType
+} = require('docx');
 const fs = require('fs');
 
-const authority = "BBMP Parks & Horticulture Wing";
-const officeAddress = "BBMP Head Office, N.R. Square, Bengaluru – 560002";
+// ─── Edit these variables for each RTI application ───────────────────────────
+
+const authority = "[Department / Public Authority Name]";
+const division  = "[Division / Wing]";
+const officeAddress = "[Office Address, City – PIN, State, India]";
+
+const subjectLine = "[Brief description of subject and time period]";
+const infoIntro   = "[Subject/location], for the period [YYYY to YYYY]";
+const transferAuthorities = "[alternate authority 1], [alternate authority 2]";
 
 const infoRequests = [
-  "Provide certified copies of all sanction orders, approval letters, and administrative orders related to the establishment or development of the new park in BTM Layout 1st Stage, Bengaluru, in 2025.",
-  "Provide the name(s) and designation(s) of the officer(s) who sanctioned and approved the new park in BTM Layout 1st Stage, Bengaluru, in 2025.",
-  "Provide certified copies of all file notings, noting sheets, and internal correspondence related to the approval of the new park in BTM Layout 1st Stage, Bengaluru, in 2025.",
-  "Provide certified copies of all work orders, tender documents, bid evaluation reports, and contracts issued for the development or construction of the new park in BTM Layout 1st Stage, Bengaluru, in 2025.",
-  "Provide details of the estimated cost and actual expenditure incurred for the development of the new park in BTM Layout 1st Stage, Bengaluru, in 2025, along with copies of expenditure statements and payment vouchers.",
-  "Provide certified copies of any land allotment orders, land transfer documents, or no-objection certificates related to the land on which the new park in BTM Layout 1st Stage, Bengaluru, has been developed.",
-  "Provide the survey number(s), extent of land, and ownership details of the plot earmarked or allotted for the new park in BTM Layout 1st Stage, Bengaluru."
+  "Please provide [specific information request 1].",
+  "Please provide [specific information request 2].",
+  "Please provide [specific information request 3].",
+  "Please provide [specific information request 4].",
+  "Please provide [specific information request 5].",
 ];
 
-const applicantName = "[Your Full Name]";
+const applicantName    = "[Your Full Name]";
 const applicantAddress = "[Your Complete Address]";
-const applicantMobile = "[Your Mobile Number]";
-const applicantEmail = "[Your Email Address]";
-const date = "16 June 2026";
+const applicantMobile  = "[Your Mobile Number]";
+const applicantEmail   = "[Your Email Address]";
+const date  = "16 June 2026";
 const place = "Bengaluru";
+
+const outputFile = "RTI_Application_Output.docx";
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+const noBorder  = { style: BorderStyle.NONE, size: 0, color: "FFFFFF" };
+const noBorders = { top: noBorder, bottom: noBorder, left: noBorder, right: noBorder };
+
+function cell(text, width, bold = false) {
+  return new TableCell({
+    borders: noBorders,
+    width: { size: width, type: WidthType.DXA },
+    margins: { top: 60, bottom: 60, left: 0, right: 80 },
+    children: [new Paragraph({
+      children: [new TextRun({ text, size: 24, bold, font: "Arial" })]
+    })]
+  });
+}
+
+function labelRow(label, value) {
+  return new TableRow({ children: [cell(label, 2200, true), cell(value, 7160)] });
+}
+
+function sectionHeading(text) {
+  return new Paragraph({
+    spacing: { before: 280, after: 120 },
+    children: [new TextRun({ text, bold: true, size: 24, font: "Arial" })]
+  });
+}
+
+function para(text, opts = {}) {
+  return new Paragraph({
+    spacing: { before: 80, after: 80 },
+    children: [new TextRun({ text, size: 24, font: "Arial", ...opts })]
+  });
+}
+
+function twoColTable(rows) {
+  return new Table({
+    width: { size: 9360, type: WidthType.DXA },
+    columnWidths: [2200, 7160],
+    rows,
+  });
+}
 
 const doc = new Document({
   sections: [{
@@ -30,58 +82,103 @@ const doc = new Document({
       }
     },
     children: [
+
+      // Title — bold + underlined, centred
       new Paragraph({
         alignment: AlignmentType.CENTER,
-        spacing: { after: 240 },
-        children: [new TextRun({ text: "APPLICATION UNDER THE RIGHT TO INFORMATION ACT, 2005", bold: true, size: 28 })]
+        spacing: { before: 0, after: 160 },
+        children: [new TextRun({
+          text: "APPLICATION UNDER RIGHT TO INFORMATION ACT, 2005",
+          bold: true, size: 28, font: "Arial",
+          underline: { type: UnderlineType.SINGLE }
+        })]
       }),
-      new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "To,", size: 24 })] }),
-      new Paragraph({ spacing: { after: 60 }, children: [new TextRun({ text: "The Central/State Public Information Officer (CPIO/SPIO)", bold: true, size: 24 })] }),
-      new Paragraph({ spacing: { after: 60 }, children: [new TextRun({ text: authority, size: 24 })] }),
-      new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: officeAddress, size: 24 })] }),
+
+      // Subtitle — italics, centred
       new Paragraph({
-        spacing: { after: 240 },
-        children: [
-          new TextRun({ text: "Subject: ", bold: true, size: 24 }),
-          new TextRun({ text: "Application under Section 6(1) of the Right to Information Act, 2005 — Seeking information regarding approval of the new park in BTM Layout 1st Stage, Bengaluru, in 2025", size: 24, underline: { type: UnderlineType.SINGLE } })
-        ]
+        alignment: AlignmentType.CENTER,
+        spacing: { before: 0, after: 360 },
+        children: [new TextRun({ text: "Section 6(1) of the RTI Act, 2005", italics: true, size: 24, font: "Arial" })]
       }),
-      new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Sir/Madam,", size: 24 })] }),
-      new Paragraph({
-        spacing: { after: 240 },
-        children: [new TextRun({ text: "I am an Indian citizen seeking information under the Right to Information Act, 2005.", size: 24 })]
+
+      // TO
+      sectionHeading("TO"),
+      para("The Public Information Officer (PIO)"),
+      para(authority),
+      para(division),
+      para(officeAddress),
+
+      // APPLICANT DETAILS
+      sectionHeading("APPLICANT DETAILS"),
+      twoColTable([
+        labelRow("Name",    ": " + applicantName),
+        labelRow("Address", ": " + applicantAddress),
+        labelRow("Mobile",  ": " + applicantMobile),
+        labelRow("Email",   ": " + applicantEmail),
+        labelRow("Date",    ": " + date),
+      ]),
+
+      // SUBJECT
+      sectionHeading("SUBJECT"),
+      para(subjectLine),
+
+      // PAYMENT OF FEE
+      sectionHeading("PAYMENT OF FEE"),
+      para("Application fee of Rs. 10/- is enclosed as Indian Postal Order / Demand Draft / Court Fee Stamp as applicable."),
+      para("Below Poverty Line (BPL) applicants are exempted from fee as per Section 7(5) of the RTI Act. [If applicable, BPL card details: ____________]"),
+
+      // INFORMATION SOUGHT
+      sectionHeading("INFORMATION SOUGHT"),
+      para(`Under Section 6(1) of the Right to Information Act, 2005, I hereby request the following information relating to ${infoIntro}:`),
+
+      new Paragraph({ spacing: { before: 120, after: 0 }, children: [] }),
+
+      new Table({
+        width: { size: 9360, type: WidthType.DXA },
+        columnWidths: [600, 8760],
+        rows: infoRequests.map((text, i) => new TableRow({
+          children: [
+            new TableCell({
+              borders: noBorders,
+              width: { size: 600, type: WidthType.DXA },
+              margins: { top: 80, bottom: 80, left: 0, right: 120 },
+              children: [new Paragraph({ children: [new TextRun({ text: `${i + 1}.`, bold: true, size: 24, font: "Arial" })] })]
+            }),
+            new TableCell({
+              borders: noBorders,
+              width: { size: 8760, type: WidthType.DXA },
+              margins: { top: 80, bottom: 80, left: 0, right: 0 },
+              children: [new Paragraph({ children: [new TextRun({ text, size: 24, font: "Arial" })] })]
+            })
+          ]
+        }))
       }),
-      new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Kindly provide the following information:", bold: true, size: 24 })] }),
-      ...infoRequests.map((req, i) =>
-        new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: `${i + 1}. ${req}`, size: 24 })] })
-      ),
-      new Paragraph({
-        spacing: { before: 240, after: 120 },
-        children: [new TextRun({ text: "For each item above, kindly provide certified copies of the relevant records, files, correspondence, file notings, approvals, reports, registers, orders, and other documents available with the public authority, wherever applicable.", size: 24 })]
-      }),
-      new Paragraph({
-        spacing: { after: 120 },
-        children: [new TextRun({ text: "If any of the requested information is held by another public authority, kindly transfer the relevant portion of this application under Section 6(3) of the RTI Act.", size: 24 })]
-      }),
-      new Paragraph({
-        spacing: { after: 240 },
-        children: [new TextRun({ text: "I prefer to receive the information in electronic format wherever available.", size: 24 })]
-      }),
-      new Paragraph({ spacing: { after: 120 }, children: [new TextRun({ text: "Applicant Details", bold: true, size: 24, underline: { type: UnderlineType.SINGLE } })] }),
-      new Paragraph({ spacing: { after: 80 }, children: [new TextRun({ text: `Name: ${applicantName}`, size: 24 })] }),
-      new Paragraph({ spacing: { after: 80 }, children: [new TextRun({ text: `Address: ${applicantAddress}`, size: 24 })] }),
-      new Paragraph({ spacing: { after: 80 }, children: [new TextRun({ text: `Mobile: ${applicantMobile}`, size: 24 })] }),
-      new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: `Email: ${applicantEmail}`, size: 24 })] }),
-      new Paragraph({ spacing: { after: 80 }, children: [new TextRun({ text: "Fee Payment Details:", bold: true, size: 24 })] }),
-      new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: "[Online Payment Reference / IPO Number / Other]", size: 24, color: "888888" })] }),
-      new Paragraph({ spacing: { after: 80 }, children: [new TextRun({ text: `Date: ${date}`, size: 24 })] }),
-      new Paragraph({ spacing: { after: 240 }, children: [new TextRun({ text: `Place: ${place}`, size: 24 })] }),
-      new Paragraph({ children: [new TextRun({ text: "Signature: _______________________", size: 24 })] }),
+
+      // TRANSFER CLAUSE
+      sectionHeading("TRANSFER CLAUSE (Section 6(3))"),
+      para(`If the requested information is not held by ${authority} but by another public authority (such as ${transferAuthorities}), I request that this application be transferred to the concerned authority as per Section 6(3) of the RTI Act, 2005, and I be informed accordingly.`),
+
+      // DECLARATION
+      sectionHeading("DECLARATION"),
+      para("I state that the information sought does not fall within the restrictions contained in Section 8 of the RTI Act, 2005, and to the best of my knowledge it pertains to your authority."),
+
+      // Date / Place table
+      new Paragraph({ spacing: { before: 300, after: 0 }, children: [] }),
+      twoColTable([
+        labelRow("Date",  ": " + date),
+        labelRow("Place", ": " + place),
+      ]),
+
+      // Signature block
+      new Paragraph({ spacing: { before: 360, after: 80 }, children: [new TextRun({ text: "Signature of Applicant", size: 24, font: "Arial" })] }),
+      new Paragraph({ spacing: { before: 0, after: 60 }, children: [new TextRun({ text: applicantName, bold: true, size: 24, font: "Arial" })] }),
+      para(applicantAddress),
+      para(applicantMobile + " | " + applicantEmail),
     ]
   }]
 });
 
 Packer.toBuffer(doc).then(buf => {
-  fs.writeFileSync("RTI_Application_BTM_Park_Approval.docx", buf);
-  console.log("Done. File saved as RTI_Application_MG_Road_Contractors.docx");
+  fs.writeFileSync(outputFile, buf);
+  console.log("Done. File saved as " + outputFile);
 });

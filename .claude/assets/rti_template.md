@@ -17,7 +17,7 @@ Key Drafting Principles
 -   Use specific date ranges, locations, project names, complaint
     numbers, or file references.
 
--   Number each information request separately.
+-   Number each information request separately (use "Please provide..." phrasing).
 
 -   Request certified copies where appropriate.
 
@@ -26,75 +26,100 @@ Key Drafting Principles
 RTI Application Template
 ------------------------
 
-**APPLICATION UNDER THE RIGHT TO INFORMATION ACT, 2005**
-*(Centred, bold)*
+**[APPLICATION UNDER RIGHT TO INFORMATION ACT, 2005]** *(bold + underlined, centred)*
 
-To,\
-The Central/State Public Information Officer (CPIO/SPIO) *(bold)*\
-\[Department / Public Authority Name\]\
-\[Office Address\]\
-\
-**Subject:** <u>Application under Section 6(1) of the Right to Information Act, 2005 — \[brief description of subject\]</u>\
-\
-Sir/Madam,\
-\
-I am an Indian citizen seeking information under the Right to
-Information Act, 2005.\
-\
-**Kindly provide the following information:**\
-\
-1. \[Specific information request\]\
-\
-2. \[Specific information request\]\
-\
-3. \[Specific information request\]\
-\
-4. \[Specific information request\]\
-\
-5. \[Specific information request\]\
-\
-For each item above, kindly provide certified copies of the relevant
-records, files, correspondence, file notings, approvals, reports,
-registers, orders, and other documents available with the public
-authority, wherever applicable.\
-\
-If any of the requested information is held by another public authority,
-kindly transfer the relevant portion of this application under Section
-6(3) of the RTI Act.\
-\
-I prefer to receive the information in electronic format wherever
-available.\
-\
-**<u>Applicant Details</u>**\
-\
-Name:\
-Address:\
-Mobile:\
-Email:\
-\
-**Fee Payment Details:**\
-\[Online Payment Reference / IPO Number / Other\]\
-\
-Date:\
-Place:\
-\
-Signature: _______________________
+*Section 6(1) of the RTI Act, 2005* *(italics, centred)*
+
+---
+
+**TO**
+
+The Public Information Officer (PIO)\
+[Department / Public Authority Name]\
+[Division / Wing]\
+[Office Address]\
+[City – PIN]\
+[State], India
+
+---
+
+**APPLICANT DETAILS** *(two-column table, label bold)*
+
+| **Name**    | : [Your Full Name]        |
+| **Address** | : [Your Complete Address] |
+| **Mobile**  | : [Your Mobile Number]    |
+| **Email**   | : [Your Email Address]    |
+| **Date**    | : [DD Month YYYY]         |
+
+---
+
+**SUBJECT**
+
+Request for information regarding [brief description of subject], for the last five years ([YYYY–YYYY]).
+
+---
+
+**PAYMENT OF FEE**
+
+Application fee of Rs. 10/- is enclosed as Indian Postal Order / Demand Draft / Court Fee Stamp as applicable.
+
+Below Poverty Line (BPL) applicants are exempted from fee as per Section 7(5) of the RTI Act. [If applicable, BPL card details: ____________]
+
+---
+
+**INFORMATION SOUGHT**
+
+Under Section 6(1) of the Right to Information Act, 2005, I hereby request the following information relating to [subject/location], for the period [YYYY to YYYY]:
+
+*(two-column table: bold numbered label | question text)*
+
+| **1.** | Please provide [specific information request]. |
+| **2.** | Please provide [specific information request]. |
+| **3.** | Please provide [specific information request]. |
+| **4.** | Please provide [specific information request]. |
+| **5.** | Please provide [specific information request]. |
+
+---
+
+**TRANSFER CLAUSE (Section 6(3))**
+
+If the requested information is not held by [Department] but by another public authority (such as [alternate authority 1], [alternate authority 2]), I request that this application be transferred to the concerned authority as per Section 6(3) of the RTI Act, 2005, and I be informed accordingly.
+
+---
+
+**DECLARATION**
+
+I state that the information sought does not fall within the restrictions contained in Section 8 of the RTI Act, 2005, and to the best of my knowledge it pertains to your authority.
+
+---
+
+*(two-column table)*
+
+| **Date**  | : [DD Month YYYY] |
+| **Place** | : [City]          |
+
+Signature of Applicant
+
+**[Your Full Name]**\
+[Your Complete Address]\
+[Your Mobile] | [Your Email]
+
+---
 
 High-Effectiveness Variations
 -----------------------------
 
 File Movement Tracking:\
-- Provide the complete file movement details.\
-- Name/designation of officers handling the file.\
-- Dates of movement.\
-- Current status of the file.
+- Please provide the complete file movement details.\
+- Please provide the name/designation of officers handling the file.\
+- Please provide the dates of movement and current status of the file.
 
 Action Taken Request:\
-- Provide copies of action taken reports.\
-- Provide copies of inspection reports.\
-- Provide copies of correspondence relating to the matter.
+- Please provide copies of action taken reports.\
+- Please provide copies of inspection reports.\
+- Please provide copies of correspondence relating to the matter.
 
 Expenditure Review:\
-- Provide sanction orders.\
-- Provide work orders.\
-- Provide expenditure statements and utilization certificates.
+- Please provide sanction orders.\
+- Please provide work orders.\
+- Please provide expenditure statements and utilization certificates.
